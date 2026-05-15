@@ -96,3 +96,13 @@ php artisan db:seed --class=ProjectSeeder
 # Generate key if needed
 php artisan key:generate
 ```
+
+## Laravel Portfolio Project
+
+| Item | Detail |
+|------|--------|
+| GitHub | https://github.com/sixer0/lp-laravel |
+| Stack | Laravel 12 + Bootstrap 5.3 + jQuery |
+| Server | /public_html/devlp/ (cPanel FTP) |
+| Dev URL | https://devlp.sixer0-bk.my.id |
+| Main Site | https://sixer0-bk.my.id |
