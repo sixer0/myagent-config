@@ -102,7 +102,18 @@ php artisan key:generate
 | Item | Detail |
 |------|--------|
 | GitHub | https://github.com/sixer0/lp-laravel |
-| Stack | Laravel 12 + Bootstrap 5.3 + jQuery |
+| Stack | Laravel 11.51 + Bootstrap 5.3 + jQuery |
 | Server | /public_html/devlp/ (cPanel FTP) |
 | Dev URL | https://devlp.sixer0-bk.my.id |
 | Main Site | https://sixer0-bk.my.id |
+
+### Deployment Guides
+
+- **Laravel 11.51 Compatibility** — All files updated for Laravel 11 syntax
+  - `bootstrap/app.php` — `Application::configure()` pattern (not 12 `->create()` standalone)
+  - `config/app.php` — Single-file config
+  - No `config/database.php`, `config/mail.php` (uses env + defaults)
+- **Server**: `/public_html/devlp/` (cPanel FTP)
+- **Dev URL**: https://devlp.sixer0-bk.my.id
+- **Main Site**: https://sixer0-bk.my.id
+
