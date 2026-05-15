@@ -47,3 +47,52 @@ python3 scripts/sitejet_manager.py list
 python3 scripts/sitejet_manager.py collection
 python3 scripts/sitejet_manager.py expertise
 ```
+
+## Website Dev Deployment
+
+### Environment
+| Item | Detail |
+|------|--------|
+| Dev URL | https://devlp.sixer0-bk.my.id |
+| Main Site | https://sixer0-bk.my.id |
+| Stack | Laravel 12 + Bootstrap 5 |
+| Root | /public_html/devlp/ (cPanel FTP) |
+| Deploy Archive | /public_html/devlp/laravel-landing.tar.gz |
+
+### Bootstrap 5 Components Used
+- **Navbar** — fixed-top, collapsible on mobile
+- **Grid** — container → row → col-lg-4/col-md-6
+- **Cards** — project cards, value cards with hover effects
+- **Buttons** — primary, outline, size variants
+- **Forms** — validation, floating labels
+- **Carousel** — testimonials slider
+- **Icons** — Bootstrap Icons
+
+### Laravel Routes
+```
+GET  /                         # Landing page
+GET  /legal-notice             # Legal page
+GET  /privacy                  # Privacy policy
+GET  /project/{slug}           # Project detail
+POST /contact                  # Contact form submit
+```
+
+### Project auto-loading
+Projects loaded from `/public_html/devlp/modules-1/2849388066.xml` (Sitejet collection)
+
+### Deploy
+```bash
+# Extract from archive on server
+tar xzf /public_html/devlp/laravel-landing.tar.gz -C /public_html/devlp/
+
+# Install via Composer
+composer install --no-dev --optimize-autoloader
+
+# Setup DB
+touch database/database.sqlite
+php artisan migrate --force
+php artisan db:seed --class=ProjectSeeder
+
+# Generate key if needed
+php artisan key:generate
+```
