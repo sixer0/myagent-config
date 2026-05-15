@@ -2,66 +2,60 @@
 
 Repository untuk menyimpan semua konfigurasi OpenClaw yang sudah dikustomisasi.
 
-## Struktur
+## 📁 Struktur Repository
 
 ```
-├── openclaw.example.json       # Konfigurasi contoh (tanpa token sensitif)
-├── workspace-backup/           # Backup file workspace utama
-│   ├── AGENTS.md
-│   ├── SOUL.md
-│   ├── USER.md
-│   ├── TOOLS.md
-│   ├── MEMORY.md
-│   ├── scripts/
-│   │   ├── office_utils.py     # Office file utilities
-│   │   └── install-skills.sh   # Built-in skills installer
-│   ├── skills/
-│   │   └── ms365/              # Microsoft 365 skill
-│   └── memory/
-│       ├── refs/
-│       └── tasks/
-├── .gitignore
-└── README.md
+├── AGENTS.md                   # Panduan workspace dan aturan
+├── SOUL.md                     # Identitas dan kepribadian agent
+├── USER.md                     # Informasi tentang pengguna
+├── MEMORY.md                   # Memori jangka panjang
+├── IDENTITY.md                 # Konfigurasi identitas
+├── TOOLS.md                    # Daftar tools dan environment
+├── HEARTBEAT.md                # Checklist heartbeat
+├── .gitignore                  # File yang di-ignore
+│
+├── agents/                     # Definisi agent kustom
+│   ├── nailla-cs.yaml         # Agent customer service Nailla
+│   └── sixerbot-cs.yaml       # Agent customer service SixerBot
+│
+├── memory/                     # Sistem memori
+│   ├── refs/                  # Referensi mendalam
+│   │   ├── nailla-agent-setup.md
+│   │   ├── office-utils.md
+│   │   └── onedrive-excel-workflow.md
+│   └── tasks/                 # Log tugas harian
+│
+├── scripts/                    # Utility scripts
+│   ├── office_utils.py        # Manipulasi xlsx/docx/pptx/pdf
+│   ├── chat-widget.js         # Frontend chat widget
+│   ├── nailla-api.php         # Backend API untuk Nailla
+│   └── setup-nailla-agent.js  # Setup script Nailla agent
+│
+├── skills/                     # Custom skills
+│   └── ms365/                # Microsoft 365 integration
+│
+└── .clawhub/                   # Lock file ClawHub
 ```
 
-## Setup
+## 🚀 Setup
 
 1. Clone repository ini
-2. Copy file `openclaw.example.json` ke `/root/.openclaw/openclaw.json`
-3. Ganti placeholder `<YOUR_GATEWAY_TOKEN>` dengan token Anda
-4. Sesuaikan konfigurasi sesuai kebutuhan
+2. Konfigurasi OpenClaw di `/root/.openclaw/openclaw.json`
+3. Sesuaikan file konfigurasi sesuai kebutuhan
 
-## Instalasi Skills
+## 📦 Skills yang Tersedia
 
-### Built-in Skills
-Jalankan script instalasi built-in skills:
+### Microsoft 365
 ```bash
-bash workspace-backup/scripts/install-skills.sh
+cd skills/ms365
+openclaw plugins install .
 ```
 
-### Custom Skills
-```bash
-cd /root/.openclaw/workspace/skills/
-git clone <your-skill-repo>
-openclaw plugins install ./skills/<skill-name>
-```
+## 🔒 Keamanan
 
-## Backup & Restore
+⚠️ **JANGAN** commit file dengan token sensitif.
+Gunakan `.gitignore` untuk melindungi konfigurasi rahasia.
 
-Untuk membackup konfigurasi saat ini:
-```bash
-cp /root/.openclaw/openclaw.json ./openclaw.example.json
-# Edit untuk menghapus token sensitif
-```
+## 📝 Changelog
 
-Untuk mengembalikan:
-```bash
-cp ./openclaw.example.json /root/.openclaw/openclaw.json
-# Edit untuk menambah token yang valid
-openclaw gateway restart
-```
-
-## Keamanan
-
-⚠️ **JANGAN** commit file `openclaw.json` yang asli karena mengandung token sensitif.
-Gunakan `openclaw.example.json` sebagai template.
+Lihat [CHANGELOG.md](CHANGELOG.md) untuk riwayat perubahan.
