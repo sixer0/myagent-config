@@ -9,3 +9,6 @@ __pycache__/
 # Keep secrets out
 *.local
 .env.env
+
+# Laravel app (separate repo: sixer0-laravel)
+sixer0-laravel/
