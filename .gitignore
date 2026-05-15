@@ -1,0 +1,11 @@
+# Nested openclaw-config repo (separate repo for config/secrets)
+openclaw-config/
+
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+
+# Keep secrets out
+*.local
+.env
